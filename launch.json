@@ -1,0 +1,185 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python",
+            // "type": "python",
+            "type": "python",
+            "request": "launch",
+            "env": {
+                "OPENERP_SERVER": "/etc/openerp-server.conf"
+            },
+            "stopOnEntry": false,
+            "pythonPath": "${command:python.interpreterPath}",
+            //"program": "${file}", use this to debug opened file.
+            "program": "${workspaceRoot}/odoo.py",
+            "args": [
+            // "--config=${workspaceRoot}/setup.cfg"  
+            // "--config=${workspaceRoot}/openerp-server.conf"
+            "--db_host=localhost",
+            "--db_port=5432",
+            "-rodoo",
+            "-wodoo"
+            ],
+            "cwd": "${workspaceRoot}",
+            // "console": "externalTerminal",            
+            "console": "integratedTerminal",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "PySpark",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "osx": {
+                "pythonPath": "${env.SPARK_HOME}/bin/spark-submit"
+            },
+            "windows": {
+                "pythonPath": "${env.SPARK_HOME}/bin/spark-submit.cmd"
+            },
+            "linux": {
+                "pythonPath": "${env.SPARK_HOME}/bin/spark-submit"
+            },
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Python Module",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config.python.pythonPath}",
+            "module": "module.name",
+            "cwd": "${workspaceRoot}",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Integrated Terminal/Console",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${file}",
+            "cwd": "null",
+            "console": "integratedTerminal",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit"
+            ]
+        },
+        {
+            "name": "External Terminal/Console",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${file}",
+            "cwd": "null",
+            "console": "externalTerminal",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit"
+            ]
+        },
+        {
+            "name": "Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${workspaceRoot}/manage.py",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "runserver",
+                "--noreload"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging"
+            ]
+        },
+        {
+            "name": "Flask",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "fully qualified path fo 'flask' executable. Generally located along with python interpreter",
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "FLASK_APP": "${workspaceRoot}/quickstart/app.py"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Flask (old)",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${workspaceRoot}/run.py",
+            "cwd": "${workspaceRoot}",
+            "args": [],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Watson",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${workspaceRoot}/console.py",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "dev",
+                "runserver",
+                "--noreload=True"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Attach (Remote Debug)",
+            // "type": "python",
+            "request": "attach",
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "${workspaceRoot}",
+            // "port": 3000,
+            "type": "python",            
+            "port": 62775,            
+            "secret": "my_secret",
+            "host": "localhost"
+        }
+    ]
+}
